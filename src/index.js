@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/style.css';
 import Home from './components/Home';
 import registerServiceWorker from './registerServiceWorker';
 

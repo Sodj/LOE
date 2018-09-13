@@ -22,3 +22,4 @@ yarn-error.log*
 
 # Less watcher settings
 settings.json
+public/list_covers/*

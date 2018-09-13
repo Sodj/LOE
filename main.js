@@ -1,15 +1,18 @@
 const {app, BrowserWindow} = require('electron');
+const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-app.on('ready', function() {
+function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow = new BrowserWindow({width: 800, height: 700, minWidth: 600, minHeight:600});
     
-    // and load the index.html of the app.
-    // mainWindow.loadFile('build/index.html'); // PROD
+    // load the index.html of the app.
+
+    // mainWindow.loadFile(path.join(__dirname, '/build/index.html')); // PROD
+    mainWindow.setMenu(null); //PROD
     mainWindow.loadURL('http://localhost:3000'); // DEV
     
     
@@ -23,7 +26,9 @@ app.on('ready', function() {
         // when you should delete the corresponding element.
         mainWindow = null;
     })
-});
+}
+
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

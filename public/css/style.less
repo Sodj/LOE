@@ -1,0 +1,100 @@
+// icons by itim2101 from https://www.flaticon.com/packs/essential-8
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #EEE;
+}
+#root{height: 100vh;}
+.head{
+    height: 50px;
+    background-color: #E5E5E5;
+    color: #555;
+    border-bottom: solid thin #CCC;
+    line-height: 50px;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+/*------------------------------------------------------------------*/
+
+.lists{ margin: 25px 0;}
+.list{
+    width: 170px;
+    height: 250px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.5);
+    background-color:#FFF;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    cursor: pointer;
+    .name{
+        margin-top: 180px;
+        font-size: 22px;
+        font-weight:200;
+        max-height: 30px;
+        padding: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #EEE;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    &.add{
+        background-color: #e0e0e0;
+        box-shadow:inset 0 1px 6px 1px rgba(0, 0, 0, 0.2);
+    }
+    .add_icon {
+      height: 100px;
+      width: 100px;
+      background-color: #e9e9e9;
+      background-image: url('/img/plus.svg');
+      background-size: 50px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      margin:70px auto;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    }
+}
+/*------------------------------------------------------------------*/
+
+.items{
+    margin: 20px 0px;
+}
+.item{
+    padding: 0 10px;
+    font-size: 0;
+    color: #777;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: solid thin #DDD;
+    cursor: default;
+    transition-duration: .1s;
+    &:hover{background-color: #E7E7E7;}
+    &>*{display: inline-block; font-size: 15px;}
+    .title{width: calc(~"100% - 360px");}
+    .att{width: 200px;}
+    .date{width: 80px; text-align: center;}
+    .action{width: 80px; text-align: center;}
+    .edit,.delete{
+        display: inline-block;
+        vertical-align: middle;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px;
+        transition-duration: .3s;
+        filter: grayscale(100%);
+        &:hover{filter: grayscale(0%);}
+    }
+    .edit  {background-image: url('../img/pencil.svg');}
+    .delete{background-image: url('../img/remove.svg');}
+}
