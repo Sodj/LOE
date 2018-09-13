@@ -1,0 +1,44 @@
+lbody {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #EEE;
+}
+.head {
+  height: 50px;
+  background-color: #E5E5E5;
+  color: #555;
+  border-bottom: solid thin #CCC;
+  line-height: 50px;
+  padding: 0 20px;
+  font-weight: 300;
+  font-size: 18px;
+}
+.list {
+  margin: 20px 10px;
+}
+.item {
+  font-size: 0;
+  color: #777;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: solid thin #DDD;
+}
+.item > * {
+  display: inline-block;
+  font-size: 15px;
+}
+.item .title {
+  width: calc(-260%);
+}
+.item .att {
+  width: 200px;
+}
+.item .date {
+  width: 80px;
+  text-align: center;
+}
+.item .action {
+  width: 80px;
+  text-align: center;
+}

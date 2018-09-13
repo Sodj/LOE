@@ -1,0 +1,32 @@
+lbody {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #EEE;
+}
+
+.head{
+    height: 50px;
+    background-color: #E5E5E5;
+    color: #555;
+    border-bottom: solid thin #CCC;
+    line-height: 50px;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 18px;
+}
+.list{
+    margin: 20px 10px;
+}
+.item{
+    font-size: 0;
+    color: #777;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: solid thin #DDD;
+    &>*{display: inline-block; font-size: 15px;}
+    .title{width: calc(100% - 360px);}
+    .att{width: 200px;}
+    .date{width: 80px; text-align: center;}
+    .action{width: 80px; text-align: center;}
+}
