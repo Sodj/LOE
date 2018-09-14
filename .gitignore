@@ -23,3 +23,8 @@ yarn-error.log*
 # Less watcher settings
 settings.json
 public/list_covers/*
+!public/list_covers/hp5.jpg
+!public/list_covers/dmc.jpg
+!public/list_covers/large.gif
+!public/list_covers/office.jpg
+!public/list_covers/todo.jpg
