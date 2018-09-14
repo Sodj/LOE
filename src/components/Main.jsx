@@ -17,7 +17,7 @@ export default class Main extends Component {
                 </div>
                 <Switch>
                     <Route exact path="/"     component={Home}/>
-                    <Route exact path="/list" component={List}/>
+                    <Route exact path="/list/:name" component={List}/>
                 </Switch>
             </div>
         );
