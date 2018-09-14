@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './components/Home';
+import Main from './components/Main';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+
+ReactDOM.render(<BrowserRouter><Main /></BrowserRouter>, document.getElementById('root'));
+
 registerServiceWorker();

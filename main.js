@@ -12,7 +12,7 @@ function createWindow() {
     // load the index.html of the app.
 
     // mainWindow.loadFile(path.join(__dirname, '/build/index.html')); // PROD
-    mainWindow.setMenu(null); //PROD
+    // mainWindow.setMenu(null); //PROD
     mainWindow.loadURL('http://localhost:3000'); // DEV
     
     

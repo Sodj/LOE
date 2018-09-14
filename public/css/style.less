@@ -1,23 +1,28 @@
-// icons by itim2101 from https://www.flaticon.com/packs/essential-8
+// icons by itim2101
+// from https://www.flaticon.com/packs/essential-8
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: #EEE;
+    background-color: #f5f5f5;
 }
 #root{height: 100vh;}
+a {text-decoration: none;}
+
 .head{
     height: 50px;
     background-color: #E5E5E5;
-    color: #555;
     border-bottom: solid thin #CCC;
     line-height: 50px;
     padding: 0 20px;
-    font-weight: 300;
-    font-size: 18px;
+    .brand{
+        color: #555;
+        font-weight: 300;
+        font-size: 18px;
+    }
 }
 
-/*------------------------------------------------------------------*/
+/*-- HOME ----------------------------------------------------*/
 
 .lists{ margin: 25px 0;}
 .list{
@@ -63,27 +68,31 @@ body {
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     }
 }
-/*------------------------------------------------------------------*/
 
-.items{
-    margin: 20px 0px;
+/*--LIST ------------------------------------------------------*/
+
+.items{ 
+    margin: 20px 10px;
+    border: solid thin #CCC;
+    border-radius: 2px;
+    overflow: hidden;
 }
-.item{
-    padding: 0 10px;
+.item, .titles{
+    background-color: #EEE;
     font-size: 0;
-    color: #777;
+    color: #555;
     height: 50px;
     line-height: 50px;
     border-bottom: solid thin #DDD;
     cursor: default;
     transition-duration: .1s;
     &:hover{background-color: #E7E7E7;}
-    &>*{display: inline-block; font-size: 15px;}
-    .title{width: calc(~"100% - 360px");}
+    &>*{display: inline-block; font-size: 15px; padding: 0 10px; box-sizing: border-box;}
+    .title{width: calc(~"100% - 380px");}
     .att{width: 200px;}
-    .date{width: 80px; text-align: center;}
-    .action{width: 80px; text-align: center;}
-    .edit,.delete{
+    .date{width: 100px; text-align: center;}
+    .action{width: 80px; text-align: center; padding: 0;}
+    .edit,.delete,.add{
         display: inline-block;
         vertical-align: middle;
         width: 32px;
@@ -94,7 +103,36 @@ body {
         transition-duration: .3s;
         filter: grayscale(100%);
         &:hover{filter: grayscale(0%);}
+        cursor: pointer;
     }
     .edit  {background-image: url('../img/pencil.svg');}
     .delete{background-image: url('../img/remove.svg');}
+    .add{background-image: url('../img/add.svg'); filter: grayscale(0%) !important;}
+    &.new{
+        padding: 0;
+        background-color: #f5f5f5;
+        input{
+            outline: none !important;
+            text-align: left;
+            box-sizing: border-box;
+            padding: 0 5px;
+            height: 100%;
+            background-color: #f5f5f5;
+            border: none;
+            border-left: solid thin #DDD;
+        }
+        .action{border-left: solid thin #DDD; margin-left: -1px;}
+    }
+}
+.titles{
+    padding: 0;
+    background-color: #E7E7E7;
+    &>*{
+        cursor: default;
+        padding: 0 5px;
+        text-align: center;
+        border-left:solid thin #DDD;
+        &.action{margin-left: -1px;}
+        color: #333;
+    }
 }
