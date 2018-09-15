@@ -35,8 +35,8 @@ export default class Home extends Component {
     render() {
         var lists = [];
         for (let i = 0; i < this.state.lists.length; i++) {
-            const list = this.state.lists[i];
-            lists.push(<this.ListItem {...list}/>);
+            let list = this.state.lists[i];
+            lists.push(<this.ListItem key={i} {...list}/>);
         }
         return (
             <div className="lists">

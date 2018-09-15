@@ -25,7 +25,7 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null;
-    })
+    });
 }
 
 app.on('ready', createWindow);
