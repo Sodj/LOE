@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getList } from '../lib/storage';
+import { getList, saveList } from '../lib/storage';
 
 export default class List extends Component {
     
@@ -90,12 +90,16 @@ export default class List extends Component {
         }
         this.state.list.items.unshift(item);
         this.setState({list: this.state.list});
+
+        saveList(this.listName, this.state.list);
     };
 
     removeItem = (index) => {
         if(!window.confirm("Are you sure?")) return;
         this.state.list.items.splice(index, 1);
         this.setState({list: this.state.list});
+
+        saveList(this.listName, this.state.list);
     }
     
     render() {
