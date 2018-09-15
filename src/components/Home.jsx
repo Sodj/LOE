@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { getLists } from '../lib/storage';
 //const {remote} = window.require('electron');
 
 export default class Home extends Component {
@@ -12,14 +13,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        // TODO get it from json file
-        var lists = [
-            {name: "Games" , cover: "dmc.jpg"   , attributes: ["Title", "Status", "Rating", "Date"]},
-            {name: "Movies", cover: "hp5.jpg"   , attributes: ["Title", "Status", "Rating", "Date"]},
-            {name: "Anime" , cover: "large.gif" , attributes: ["Title", "Season", "Episode", "Status", "Rating"]},
-            {name: "Series", cover: "office.jpg", attributes: ["Title", "Season", "Episode", "Status", "Rating"]},
-            {name: "Todo"  , cover: "todo.jpg"  , attributes: ["Title", "Status", "Due date"]}
-        ];
+        var lists = getLists();
         this.setState({lists: lists});
     }
     

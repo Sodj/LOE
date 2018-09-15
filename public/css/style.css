@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Nunito, sans-serif;
+  font-weight: 600;
   background-color: #f5f5f5;
 }
 #root {
@@ -19,7 +20,7 @@ a {
 }
 .head .brand {
   color: #555;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 18px;
 }
 /*-- HOME ----------------------------------------------------*/
@@ -44,7 +45,7 @@ a {
 .list .name {
   margin-top: 180px;
   font-size: 22px;
-  font-weight: 200;
+  font-weight: 300;
   max-height: 30px;
   padding: 5px;
   overflow: hidden;
@@ -78,6 +79,7 @@ a {
 }
 .item,
 .titles {
+  display: flex;
   background-color: #EEE;
   font-size: 0;
   color: #555;
@@ -89,33 +91,29 @@ a {
 }
 .item:hover,
 .titles:hover {
-  background-color: #E7E7E7;
+  background-color: #EAEAEA;
 }
-.item > *,
-.titles > * {
+.item .att,
+.titles .att {
   display: inline-block;
   font-size: 15px;
   padding: 0 10px;
   box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
 }
-.item .title,
-.titles .title {
-  width: calc(100% - 380px);
-}
-.item .att,
-.titles .att {
-  width: 200px;
-}
-.item .date,
-.titles .date {
-  width: 100px;
-  text-align: center;
+.item .att:first-child,
+.titles .att:first-child {
+  flex: 2;
 }
 .item .action,
 .titles .action {
   width: 80px;
   text-align: center;
   padding: 0;
+  flex: none;
 }
 .item .edit,
 .titles .edit,
@@ -164,8 +162,6 @@ a {
 .titles.new input {
   outline: none !important;
   text-align: left;
-  box-sizing: border-box;
-  padding: 0 5px;
   height: 100%;
   background-color: #f5f5f5;
   border: none;
@@ -180,9 +176,12 @@ a {
   padding: 0;
   background-color: #E7E7E7;
 }
+.titles:hover {
+  background-color: #E7E7E7;
+}
 .titles > * {
+  font-size: 16px;
   cursor: default;
-  padding: 0 5px;
   text-align: center;
   border-left: solid thin #DDD;
   color: #333;
