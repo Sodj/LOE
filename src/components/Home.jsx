@@ -19,7 +19,7 @@ export default class Home extends Component {
     
     ListItem = (props) => {
         return (
-            <Link to={"/list/Games"}>
+            <Link to={"/list/"+props.name}>
                 <div className="list" style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
                     <div className="name">{props.name}</div>
                 </div>

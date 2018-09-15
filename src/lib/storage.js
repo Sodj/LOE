@@ -25,11 +25,11 @@ function saveList(name, _list){
 
 // dummy data
 var lists = [
-    {name: "Games" , cover: "dmc.jpg"   , attributes: ["Title", "Status", "Rating", "Date"]},
-    {name: "Movies", cover: "hp5.jpg"   , attributes: ["Title", "Status", "Rating", "Date"]},
-    {name: "Anime" , cover: "large.gif" , attributes: ["Title", "Season", "Episode", "Status", "Rating"]},
-    {name: "Series", cover: "office.jpg", attributes: ["Title", "Season", "Episode", "Status", "Rating"]},
-    {name: "Todo"  , cover: "todo.jpg"  , attributes: ["Title", "Status", "Due date"]}
+    {name: "Games" , cover: "dmc.jpg"   , attributes: ["Title", "Status", "Rating", "Date"], items: []},
+    {name: "Movies", cover: "hp5.jpg"   , attributes: ["Title", "Status", "Rating", "Date"], items: []},
+    {name: "Anime" , cover: "large.gif" , attributes: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Series", cover: "office.jpg", attributes: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Todo"  , cover: "todo.jpg"  , attributes: ["Title", "Status", "Due date"], items: []}
 ];
 
 lists[0].items = [
