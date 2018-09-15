@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+//const {remote} = window.require('electron');
 
 export default class Home extends Component {
     
