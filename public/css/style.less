@@ -106,7 +106,7 @@ a {text-decoration: none;}
         padding: 0;
         flex: none;
     }
-    .edit,.delete,.add{
+    .edit,.delete,.save,.cancel,.add{
         display: inline-block;
         vertical-align: middle;
         width: 32px;
@@ -121,19 +121,29 @@ a {text-decoration: none;}
     }
     .edit  {background-image: url('../img/pencil.svg');}
     .delete{background-image: url('../img/remove.svg');}
+    .save  {background-image: url('../img/download.svg');}
+    .cancel{background-image: url('../img/recycling.svg');}
     .add{background-image: url('../img/add.svg'); filter: grayscale(0%) !important;}
     &.new{
         padding: 0;
         background-color: #f5f5f5;
-        input{
-            outline: none !important;
-            text-align: left;
-            height: 100%;
-            background-color: #f5f5f5;
-            border: none;
-            border-left: solid thin #DDD;
-        }
         .action{border-left: solid thin #DDD; margin-left: -1px;}
+    }
+    &.editing{
+        background: #f5f5f5;
+        box-shadow: 0 0 80px #0004;
+        position: relative;
+        &>*{border-left: solid thin #DDD;}
+    }
+    input.att{
+        font-family: inherit;
+        font-weight: 600;
+        outline: none !important;
+        text-align: left;
+        height: 100%;
+        background-color: #f5f5f5;
+        border: none;
+        border-left: solid thin #DDD;
     }
 }
 .titles{
@@ -149,3 +159,13 @@ a {text-decoration: none;}
         color: #333;
     }
 }
+
+[contenteditable="true"] {
+    outline: none;
+    white-space: nowrap;
+    width:200px;
+    overflow: hidden;
+    text-overflow: initial !important;
+    br {display:none;}
+    * {display:inline; white-space:nowrap;}
+} 

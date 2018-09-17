@@ -6,7 +6,7 @@ export default class List extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {list: null};
+        this.state = {list: null, editing: null};
         this.listName = props.match.params.name;
     }
 
@@ -21,24 +21,45 @@ export default class List extends Component {
 
         for (let i = 0; i < list.attributes.length; i++) {
             const attributeName = list.attributes[i];
-            this.setState({[attributeName]: ""});
+            this.setState({[attributeName]: "", ["edit_"+attributeName]: ""});
         }
     }
+
     componentWillUnmount(){setGlobalState({currentList: ''});}
 
     Item = (props) => {
         let attributes = [];
+        let inputs = [];
         for (let i = 0; i < props.attributes.length; i++) {
-            const att = props.attributes[i];
-            attributes.push(<div key={i} className="att" title={props.item[att]}>{props.item[att]}</div>);
+            const attributeName = props.attributes[i];
+            attributes.push(<div key={i} className="att" title={props.item[attributeName]}>{props.item[attributeName]}</div>);
+            inputs.push(<input 
+                key={i} 
+                type="text" 
+                className="att"
+                name={"edit_"+attributeName}
+                value={this.state["edit_"+attributeName]}
+                placeholder={attributeName}
+                onChange={this.inputChange}
+                onKeyPress={e => {if(e.key === "Enter") this.saveEditedItem(props.index)}}
+                onKeyUp={e => {if(e.key === "Escape") this.discardEditedItem(props.index)}}
+                autoFocus={i===0}
+            />);
         }
         return (
-            <div className="item">
-                {attributes}
-                <div className="action">
-                    <div className="edit"></div>
-                    <div className="delete" onClick={()=>{this.removeItem(props.index)}}></div>
-                </div>
+            <div className={["item", this.state.editing===props.index? "editing":""].join(' ')}>
+                {this.state.editing!==props.index? attributes : inputs}
+                {this.state.editing!==props.index?
+                    <div className="action">
+                        <div className="edit"   onClick={()=>this.editItem(props.index)}></div>
+                        <div className="delete" onClick={()=>this.removeItem(props.index)}></div>
+                    </div>
+                    :
+                    <div className="action">
+                        <div className="save" onClick={()=>this.saveEditedItem(props.index)}></div>
+                        <div className="cancel" onClick={()=>this.discardEditedItem(props.index)}></div>
+                    </div>
+                }
             </div>
         );
     }
@@ -103,6 +124,34 @@ export default class List extends Component {
         this.setState({list: this.state.list});
 
         saveList(this.listName, this.state.list);
+    }
+
+    editItem = (index) => {
+        for (let i = 0; i < this.state.list.attributes.length; i++) {
+            const attributeName = this.state.list.attributes[i];
+            this.setState({["edit_"+attributeName]: this.state.list.items[index][attributeName]});
+        }
+        this.setState({editing: index});
+    }
+
+    saveEditedItem = (index) => {
+        let item = this.state.list.items[index];
+        let newItem = {};
+        for (let i = 0; i < this.state.list.attributes.length; i++) {
+            const attributeName = this.state.list.attributes[i];
+            newItem[attributeName] = this.state["edit_"+attributeName];
+            this.setState({["edit_"+attributeName]: ""});
+        }
+        this.state.list.items[index] = newItem;
+        this.setState({editing: null, list: this.state.list});
+    }
+    
+    discardEditedItem = (index) => {
+        for (let i = 0; i < this.state.list.attributes.length; i++) {
+            const attributeName = this.state.list.attributes[i];
+            this.setState({["edit_"+attributeName]: ""});
+        }
+        this.setState({editing: null});
     }
     
     render() {

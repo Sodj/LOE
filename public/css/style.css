@@ -119,6 +119,10 @@ a {
 .titles .edit,
 .item .delete,
 .titles .delete,
+.item .save,
+.titles .save,
+.item .cancel,
+.titles .cancel,
 .item .add,
 .titles .add {
   display: inline-block;
@@ -136,6 +140,10 @@ a {
 .titles .edit:hover,
 .item .delete:hover,
 .titles .delete:hover,
+.item .save:hover,
+.titles .save:hover,
+.item .cancel:hover,
+.titles .cancel:hover,
 .item .add:hover,
 .titles .add:hover {
   filter: grayscale(0%);
@@ -148,6 +156,14 @@ a {
 .titles .delete {
   background-image: url('../img/remove.svg');
 }
+.item .save,
+.titles .save {
+  background-image: url('../img/download.svg');
+}
+.item .cancel,
+.titles .cancel {
+  background-image: url('../img/recycling.svg');
+}
 .item .add,
 .titles .add {
   background-image: url('../img/add.svg');
@@ -158,19 +174,31 @@ a {
   padding: 0;
   background-color: #f5f5f5;
 }
-.item.new input,
-.titles.new input {
+.item.new .action,
+.titles.new .action {
+  border-left: solid thin #DDD;
+  margin-left: -1px;
+}
+.item.editing,
+.titles.editing {
+  background: #f5f5f5;
+  box-shadow: 0 0 80px #0004;
+  position: relative;
+}
+.item.editing > *,
+.titles.editing > * {
+  border-left: solid thin #DDD;
+}
+.item input.att,
+.titles input.att {
+  font-family: inherit;
+  font-weight: 600;
   outline: none !important;
   text-align: left;
   height: 100%;
   background-color: #f5f5f5;
   border: none;
   border-left: solid thin #DDD;
-}
-.item.new .action,
-.titles.new .action {
-  border-left: solid thin #DDD;
-  margin-left: -1px;
 }
 .titles {
   padding: 0;
@@ -188,4 +216,18 @@ a {
 }
 .titles > *.action {
   margin-left: -1px;
+}
+[contenteditable="true"] {
+  outline: none;
+  white-space: nowrap;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: initial !important;
+}
+[contenteditable="true"] br {
+  display: none;
+}
+[contenteditable="true"] * {
+  display: inline;
+  white-space: nowrap;
 }
