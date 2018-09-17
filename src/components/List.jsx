@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getList, saveList } from '../lib/storage';
+import { setGlobalState } from '../lib/globalState';
 
 export default class List extends Component {
     
@@ -10,6 +11,7 @@ export default class List extends Component {
     }
 
     componentWillMount() {
+        setGlobalState({currentList: ": "+this.listName});
         var list = getList(this.listName);
         if(!list) {
             alert("Oops, not found");
@@ -22,6 +24,7 @@ export default class List extends Component {
             this.setState({[attributeName]: ""});
         }
     }
+    componentWillUnmount(){setGlobalState({currentList: ''});}
 
     Item = (props) => {
         let attributes = [];
