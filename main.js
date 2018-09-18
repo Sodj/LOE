@@ -34,9 +34,12 @@ app.on('ready', createWindow);
 app.on('window-all-closed', function () {
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+    // if (process.platform !== 'darwin') {
+    //     app.quit();
+    // }
+
+    // No thanks, just kill the app if i hit close btn
+    app.quit();
 })
 
 app.on('activate', function () {
