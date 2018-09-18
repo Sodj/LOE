@@ -51,13 +51,13 @@ export default class List extends Component {
                 {this.state.editing!==props.index? attributes : inputs}
                 {this.state.editing!==props.index?
                     <div className="action">
-                        <div className="edit"   onClick={()=>this.editItem(props.index)}></div>
-                        <div className="delete" onClick={()=>this.removeItem(props.index)}></div>
+                        <div className="edit"   title="Edit"   onClick={()=>this.editItem(props.index)}></div>
+                        <div className="delete" title="Delete" onClick={()=>this.deleteItem(props.index)}></div>
                     </div>
                     :
                     <div className="action">
-                        <div className="save" onClick={()=>this.saveEditedItem(props.index)}></div>
-                        <div className="cancel" onClick={()=>this.discardEditedItem(props.index)}></div>
+                        <div className="save"   title="Save"   onClick={()=>this.saveEditedItem(props.index)}></div>
+                        <div className="cancel" title="Cancel" onClick={()=>this.discardEditedItem(props.index)}></div>
                     </div>
                 }
             </div>
@@ -118,7 +118,7 @@ export default class List extends Component {
         saveList(this.listName, this.state.list);
     };
 
-    removeItem = (index) => {
+    deleteItem = (index) => {
         if(!window.confirm("Are you sure?")) return;
         this.state.list.items.splice(index, 1);
         this.setState({list: this.state.list});
@@ -135,7 +135,6 @@ export default class List extends Component {
     }
 
     saveEditedItem = (index) => {
-        let item = this.state.list.items[index];
         let newItem = {};
         for (let i = 0; i < this.state.list.attributes.length; i++) {
             const attributeName = this.state.list.attributes[i];
@@ -144,6 +143,8 @@ export default class List extends Component {
         }
         this.state.list.items[index] = newItem;
         this.setState({editing: null, list: this.state.list});
+
+        saveList(this.listName, this.state.list);
     }
     
     discardEditedItem = (index) => {
