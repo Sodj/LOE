@@ -150,7 +150,7 @@ a {
 }
 .item .edit,
 .titles .edit {
-  background-image: url('../img/pencil.svg');
+  background-image: url('../img/edit.svg');
 }
 .item .delete,
 .titles .delete {
@@ -158,11 +158,11 @@ a {
 }
 .item .save,
 .titles .save {
-  background-image: url('../img/download.svg');
+  background-image: url('../img/check.svg');
 }
 .item .cancel,
 .titles .cancel {
-  background-image: url('../img/recycling.svg');
+  background-image: url('../img/cancel.svg');
 }
 .item .add,
 .titles .add {
