@@ -141,6 +141,7 @@ export default class List extends Component {
             newItem[attributeName] = this.state["edit_"+attributeName];
             this.setState({["edit_"+attributeName]: ""});
         }
+        // eslint-disable-next-line
         this.state.list.items[index] = newItem;
         this.setState({editing: null, list: this.state.list});
 
