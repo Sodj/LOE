@@ -14,6 +14,7 @@ function createWindow() {
     // mainWindow.loadFile(path.join(__dirname, '/build/index.html')); // PROD
     // mainWindow.setMenu(null); //PROD
     mainWindow.loadURL('http://localhost:3000'); // DEV
+    if (process.platform === 'darwin') app.dock.setIcon(path.join(__dirname, 'assets/icons/png/logo.png')); //DEV
     
     
     // Open the DevTools.
