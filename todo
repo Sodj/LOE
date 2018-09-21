@@ -1,0 +1,17 @@
+
+- devide html into components
+- use dummy data (lib)
+- render items (depending on list attributes)
+
+- add item
+- delete item
+- edit item
+
+- persist the data
+
+- add list
+
+# ---- Done ----
+
+- delete list (confirm)
+- edit list (edit attributes in v2)

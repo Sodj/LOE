@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getLists } from '../lib/storage';
+import NewList from './newList';
 //const {remote} = window.require('electron');
 
 export default class Home extends Component {
@@ -8,7 +9,8 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lists: []
+            lists: [],
+            adding: false
         };
     }
 
@@ -36,10 +38,10 @@ export default class Home extends Component {
         return (
             <div className="lists">
                 {lists}
-                <div className="list add">
-                    <div className="add_icon">
-                    </div>
+                <div className="list add" onClick={()=>this.setState({adding: true})}>
+                    <div className="add_icon"></div>
                 </div>
+                {this.state.adding && <NewList close={()=>this.setState({adding: false})} />}
             </div>
         );
     }

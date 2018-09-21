@@ -11,35 +11,32 @@ if(useFileSystem){ // in electron & not a browser
     var pathToFile = path.join(userDataPath, 'userlists.loe');
 }
 
-// dummy data
-var lists = [
-    {name: "Games" , cover: "dmc.jpg"   , attributes: ["Title", "Status", "Rating", "Date"], items: []},
-    {name: "Movies", cover: "hp5.jpg"   , attributes: ["Title", "Status", "Rating", "Date"], items: []},
-    {name: "Anime" , cover: "large.gif" , attributes: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
-    {name: "Series", cover: "office.jpg", attributes: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
-    {name: "Todo"  , cover: "todo.jpg"  , attributes: ["Title", "Status", "Due date"], items: []}
-];
+var lists = loadLists();
 
-lists[0].items = [
-    {Title: "Assassins Creed Origins", Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
-    {Title: "Call of Duty Ghosts"    , Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
-    {Title: "Skyrim"                 , Status:"Unfinished",  Rating: "Not my type", Date: "12-12-2012"},
-    {Title: "Far Cry 4"              , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
-    {Title: "Need For Speed Payback" , Status:"Finished",    Rating: "★★★★★",       Date: "12-12-2012"},
-    {Title: "Need For Speed Shift"   , Status:"Unfinished",  Rating: "NFS Shit",    Date: "12-12-2012"},
-    {Title: "Grand Theft Auto V"     , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
-    {Title: "League of Legends"      , Status:"In progress", Rating: "Amazing",     Date: "12-12-2012"},
+// TODO remove dummy data
+if(!lists.length) lists = [
+    {name: "Games" , cover: "dmc.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: [
+        {Title: "Assassins Creed Origins", Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
+        {Title: "Call of Duty Ghosts"    , Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
+        {Title: "Skyrim"                 , Status:"Unfinished",  Rating: "Not my type", Date: "12-12-2012"},
+        {Title: "Far Cry 4"              , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
+        {Title: "Need For Speed Payback" , Status:"Finished",    Rating: "★★★★★",       Date: "12-12-2012"},
+        {Title: "Need For Speed Shift"   , Status:"Unfinished",  Rating: "NFS Shit",    Date: "12-12-2012"},
+        {Title: "Grand Theft Auto V"     , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
+        {Title: "League of Legends"      , Status:"In progress", Rating: "Amazing",     Date: "12-12-2012"},
+    ]},
+    {name: "Movies", cover: "hp5.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: []},
+    {name: "Anime" , cover: "large.gif" , columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Series", cover: "office.jpg", columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Todo"  , cover: "todo.jpg"  , columns: ["Title", "Status", "Due date"], items: []}
 ];
-
-lists = loadLists();
 
 function loadLists(){
     try {
         var data = null;
         if(useFileSystem) { if(fs.existsSync(pathToFile)) data = fs.readFileSync(pathToFile, 'utf8'); }
         else { data = window.localStorage.getItem("userLists"); }
-        lists = data? JSON.parse(data) : lists;
-        return lists;
+        return data? JSON.parse(data) : [];
     }
     catch (error) {
         console.log("oops reading file failed!", error);
@@ -67,7 +64,9 @@ function getList(name){
     return lists[lists.map(e=>e.name).indexOf(name)];
 }
 
-function saveList(name, _list){
-    lists[lists.map(e=>e.name).indexOf(name)] = _list;
+function saveList(_list){
+    var index = lists.map(e=>e.name).indexOf(_list.name);
+    if(index >=0 ) lists[index] = _list; // update existing
+    else lists.push(_list); // create new
     saveLists(lists);
 }

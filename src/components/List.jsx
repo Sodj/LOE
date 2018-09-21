@@ -19,8 +19,8 @@ export default class List extends Component {
         }
         this.setState({list: list});
 
-        for (let i = 0; i < list.attributes.length; i++) {
-            const attributeName = list.attributes[i];
+        for (let i = 0; i < list.columns.length; i++) {
+            const attributeName = list.columns[i];
             this.setState({[attributeName]: "", ["edit_"+attributeName]: ""});
         }
     }
@@ -28,11 +28,11 @@ export default class List extends Component {
     componentWillUnmount(){setGlobalState({currentList: ''});}
 
     Item = (props) => {
-        let attributes = [];
+        let columns = [];
         let inputs = [];
-        for (let i = 0; i < props.attributes.length; i++) {
-            const attributeName = props.attributes[i];
-            attributes.push(<div key={i} className="att" title={props.item[attributeName]}>{props.item[attributeName]}</div>);
+        for (let i = 0; i < props.columns.length; i++) {
+            const attributeName = props.columns[i];
+            columns.push(<div key={i} className="att" title={props.item[attributeName]}>{props.item[attributeName]}</div>);
             inputs.push(<input 
                 key={i} 
                 type="text" 
@@ -48,7 +48,7 @@ export default class List extends Component {
         }
         return (
             <div className={["item", this.state.editing===props.index? "editing":""].join(' ')}>
-                {this.state.editing!==props.index? attributes : inputs}
+                {this.state.editing!==props.index? columns : inputs}
                 {this.state.editing!==props.index?
                     <div className="action">
                         <div className="edit"   title="Edit"   onClick={()=>this.editItem(props.index)}></div>
@@ -65,13 +65,13 @@ export default class List extends Component {
     }
 
     Titles = (props) => {
-        let attributes = [];
-        for (let i = 0; i < props.attributes.length; i++) {
-            attributes.push(<div key={i} className="att" title={props.attributes[i]}>{props.attributes[i]}</div>);
+        let columns = [];
+        for (let i = 0; i < props.columns.length; i++) {
+            columns.push(<div key={i} className="att" title={props.columns[i]}>{props.columns[i]}</div>);
         }
         return (
             <div className="titles">
-                {attributes}
+                {columns}
                 <div className="action">Action</div>
             </div>
         );
@@ -79,8 +79,8 @@ export default class List extends Component {
 
     NewItem = (props) => {
         let inputs = [];
-        for (let i = 0; i < props.attributes.length; i++) {
-            const attributeName = props.attributes[i];
+        for (let i = 0; i < props.columns.length; i++) {
+            const attributeName = props.columns[i];
             inputs.push(<input 
                 key={i} 
                 type="text" 
@@ -105,17 +105,17 @@ export default class List extends Component {
     inputChange = (e) => { this.setState({ [e.target.name]: e.target.value }); }
 
     addItem = (e) => {
-        if(!this.state[this.state.list.attributes[0]]) return;
+        if(!this.state[this.state.list.columns[0]]) return;
         var item = {};
-        for (let i = 0; i < this.state.list.attributes.length; i++) {
-            const attributeName = this.state.list.attributes[i];
+        for (let i = 0; i < this.state.list.columns.length; i++) {
+            const attributeName = this.state.list.columns[i];
             item[attributeName] = this.state[attributeName];
             this.setState({[attributeName]: ""});
         }
         this.state.list.items.unshift(item);
         this.setState({list: this.state.list});
 
-        saveList(this.listName, this.state.list);
+        saveList(this.state.list);
     };
 
     deleteItem = (index) => {
@@ -123,12 +123,12 @@ export default class List extends Component {
         this.state.list.items.splice(index, 1);
         this.setState({list: this.state.list});
 
-        saveList(this.listName, this.state.list);
+        saveList(this.state.list);
     }
 
     editItem = (index) => {
-        for (let i = 0; i < this.state.list.attributes.length; i++) {
-            const attributeName = this.state.list.attributes[i];
+        for (let i = 0; i < this.state.list.columns.length; i++) {
+            const attributeName = this.state.list.columns[i];
             this.setState({["edit_"+attributeName]: this.state.list.items[index][attributeName]});
         }
         this.setState({editing: index});
@@ -136,8 +136,8 @@ export default class List extends Component {
 
     saveEditedItem = (index) => {
         let newItem = {};
-        for (let i = 0; i < this.state.list.attributes.length; i++) {
-            const attributeName = this.state.list.attributes[i];
+        for (let i = 0; i < this.state.list.columns.length; i++) {
+            const attributeName = this.state.list.columns[i];
             newItem[attributeName] = this.state["edit_"+attributeName];
             this.setState({["edit_"+attributeName]: ""});
         }
@@ -145,12 +145,12 @@ export default class List extends Component {
         this.state.list.items[index] = newItem;
         this.setState({editing: null, list: this.state.list});
 
-        saveList(this.listName, this.state.list);
+        saveList(this.state.list);
     }
     
     discardEditedItem = (index) => {
-        for (let i = 0; i < this.state.list.attributes.length; i++) {
-            const attributeName = this.state.list.attributes[i];
+        for (let i = 0; i < this.state.list.columns.length; i++) {
+            const attributeName = this.state.list.columns[i];
             this.setState({["edit_"+attributeName]: ""});
         }
         this.setState({editing: null});
@@ -161,15 +161,15 @@ export default class List extends Component {
         let NewItem = this.NewItem;
         let items = [];
         for (let i = 0; this.state.list && i < this.state.list.items.length; i++) {
-            items.push(<this.Item key={i} index={i} attributes={this.state.list.attributes} item={this.state.list.items[i]}/>);
+            items.push(<this.Item key={i} index={i} columns={this.state.list.columns} item={this.state.list.items[i]}/>);
         }
         
         return (
             <div className="items">
 
-                <Titles attributes={this.state.list.attributes}/>
+                <Titles columns={this.state.list.columns}/>
 
-                <NewItem attributes={this.state.list.attributes}/>
+                <NewItem columns={this.state.list.columns}/>
 
                 {items}
 
