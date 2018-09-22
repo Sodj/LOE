@@ -5,15 +5,13 @@
     "private": true,
     "main": "main.js",
     "homepage": "./",
-    "dependencies": {
-    },
+    "dependencies": {},
     "scripts": {
         "e": "electron .",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-
         "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo.icns --prune=true --out=release-builds",
         "package-win": "electron-packager . LoE --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"List of Everything\"",
         "package-linux": "electron-packager . LoE --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"

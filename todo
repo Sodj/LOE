@@ -14,4 +14,5 @@
 # ---- Done ----
 
 - delete list (confirm)
-- edit list (edit attributes in v2)
+- edit list (rename list and columns) 
+- add/remove columns in v2
