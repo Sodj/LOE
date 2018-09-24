@@ -33,11 +33,11 @@ export default class NewList extends Component {
             <div id="newList">
                 <div className="panel">
                     <div className="close" onClick={this.props.close} >&times;</div>
-                        <input type="text" id="listName" className="input" name={"name"} value={this.state.name} onChange={this.inputChange} placeholder="Name of your list" autoFocus={true}/>
-                        <div id="listCover">List cover ...</div>
-                        <input type="text" id="listColumns" className="input" name={"columns"} value={this.state.columns} onChange={this.inputChange} placeholder="column1; column2; column3 ..."/>
-                        <button id="createList" onClick={this.createList}>Create</button>
-                    </div>
+                    <input type="text" id="listName" className="input" name={"name"} value={this.state.name} onChange={this.inputChange} placeholder="Name of your list" autoFocus={true}/>
+                    <div id="listCover">List cover ...(soon)</div>
+                    <input type="text" id="listColumns" className="input" name={"columns"} value={this.state.columns} onChange={this.inputChange} placeholder="column1; column2; column3 ..."/>
+                    <button id="createList" onClick={this.createList}>Create</button>
+                </div>
             </div>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getLists, saveLists } from '../lib/storage';
 import NewList from './newList';
+import EditList from './editList';
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
 if(useContextMenu){
@@ -17,6 +18,7 @@ export default class Home extends Component {
         this.state = {
             lists: [],
             adding: false,
+            editing: false,
             rightClickedIndex: null
         };
 
@@ -46,7 +48,7 @@ export default class Home extends Component {
     }
     
     editList = () => {
-        alert("edit: "+this.state.rightClickedIndex)
+        this.setState({editing: this.state.rightClickedIndex});
     }
 
     deleteList = () => {
@@ -79,6 +81,7 @@ export default class Home extends Component {
                     <div className="add_icon"></div>
                 </div>
                 {this.state.adding && <NewList close={()=>this.setState({adding: false})} />}
+                {this.state.editing!==false && <EditList close={()=>this.setState({editing: false})} list={this.state.lists[this.state.editing]} />}
             </div>
         );
     }

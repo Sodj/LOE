@@ -16,14 +16,14 @@ var lists = loadLists();
 // TODO remove dummy data
 if(!lists.length) lists = [
     {name: "Games" , cover: "dmc.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: [
-        {Title: "Assassins Creed Origins", Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
-        {Title: "Call of Duty Ghosts"    , Status:"Finished",    Rating: "★★★",         Date: "12-12-2012"},
-        {Title: "Skyrim"                 , Status:"Unfinished",  Rating: "Not my type", Date: "12-12-2012"},
-        {Title: "Far Cry 4"              , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
-        {Title: "Need For Speed Payback" , Status:"Finished",    Rating: "★★★★★",       Date: "12-12-2012"},
-        {Title: "Need For Speed Shift"   , Status:"Unfinished",  Rating: "NFS Shit",    Date: "12-12-2012"},
-        {Title: "Grand Theft Auto V"     , Status:"Finished",    Rating: "★★★★",        Date: "12-12-2012"},
-        {Title: "League of Legends"      , Status:"In progress", Rating: "Amazing",     Date: "12-12-2012"},
+        ["Assassins Creed Origins", "Finished"   , "★★★"        , "12-12-2012"],
+        ["Call of Duty Ghosts"    , "Finished"   , "★★★"        , "12-12-2012"],
+        ["Skyrim"                 , "Unfinished" , "Not my type", "12-12-2012"],
+        ["Far Cry 4"              , "Finished"   , "★★★★"       , "12-12-2012"],
+        ["Need For Speed Payback" , "Finished"   , "★★★★★"      , "12-12-2012"],
+        ["Need For Speed Shift"   , "Unfinished" , "NFS Shit"   , "12-12-2012"],
+        ["Grand Theft Auto V"     , "Finished"   , "★★★★"       , "12-12-2012"],
+        ["League of Legends"      , "In progress", "Amazing"    , "12-12-2012"],
     ]},
     {name: "Movies", cover: "hp5.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: []},
     {name: "Anime" , cover: "large.gif" , columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
@@ -64,8 +64,8 @@ function getList(name){
     return lists[lists.map(e=>e.name).indexOf(name)];
 }
 
-function saveList(_list){
-    var index = lists.map(e=>e.name).indexOf(_list.name);
+function saveList(_list, listName){
+    var index = lists.map(e=>e.name).indexOf(listName || _list.name);
     if(index >=0 ) lists[index] = _list; // update existing
     else lists.push(_list); // create new
     saveLists(lists);

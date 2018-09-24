@@ -32,7 +32,7 @@ export default class List extends Component {
         let inputs = [];
         for (let i = 0; i < props.columns.length; i++) {
             const attributeName = props.columns[i];
-            columns.push(<div key={i} className="att" title={props.item[attributeName]}>{props.item[attributeName]}</div>);
+            columns.push(<div key={i} className="att" title={props.item[i]}>{props.item[i]}</div>);
             inputs.push(<input 
                 key={i} 
                 type="text" 
@@ -109,7 +109,7 @@ export default class List extends Component {
         var item = {};
         for (let i = 0; i < this.state.list.columns.length; i++) {
             const attributeName = this.state.list.columns[i];
-            item[attributeName] = this.state[attributeName];
+            item[i] = this.state[attributeName];
             this.setState({[attributeName]: ""});
         }
         this.state.list.items.unshift(item);
@@ -129,7 +129,7 @@ export default class List extends Component {
     editItem = (index) => {
         for (let i = 0; i < this.state.list.columns.length; i++) {
             const attributeName = this.state.list.columns[i];
-            this.setState({["edit_"+attributeName]: this.state.list.items[index][attributeName]});
+            this.setState({["edit_"+attributeName]: this.state.list.items[index][i]});
         }
         this.setState({editing: index});
     }
@@ -138,7 +138,7 @@ export default class List extends Component {
         let newItem = {};
         for (let i = 0; i < this.state.list.columns.length; i++) {
             const attributeName = this.state.list.columns[i];
-            newItem[attributeName] = this.state["edit_"+attributeName];
+            newItem[i] = this.state["edit_"+attributeName];
             this.setState({["edit_"+attributeName]: ""});
         }
         // eslint-disable-next-line
