@@ -104,12 +104,12 @@ a {text-decoration: none;}
     }
     .input{outline: none; font-family: Nunito;}
     #listName{
-        padding: 10px 0;
+        padding:0;
         border: none;
         border-bottom: solid thin #CCC;
         font-size: 32px;
         background-color: transparent;
-        margin-bottom: 30px;
+        margin: 30px 0;
     }
     #listCover{
         margin-bottom: 30px;
@@ -139,6 +139,8 @@ a {text-decoration: none;}
         box-shadow: 1px 1px 1px rgba(0,0,0,.4);
         margin-left: calc(~"100% - 100px");
         cursor: pointer;
+        transition-duration: .2s;
+        &:hover{filter: saturate(110%);}
         &:active{position:relative; top:1px; box-shadow:none !important;}
     }
 }

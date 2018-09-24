@@ -110,12 +110,12 @@ a {
   font-family: Nunito;
 }
 #newList #listName {
-  padding: 10px 0;
+  padding: 0;
   border: none;
   border-bottom: solid thin #CCC;
   font-size: 32px;
   background-color: transparent;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 #newList #listCover {
   margin-bottom: 30px;
@@ -144,6 +144,10 @@ a {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   margin-left: calc(100% - 100px);
   cursor: pointer;
+  transition-duration: .2s;
+}
+#newList #createList:hover {
+  filter: saturate(110%);
 }
 #newList #createList:active {
   position: relative;

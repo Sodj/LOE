@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getLists } from '../lib/storage';
+import { getLists, saveLists } from '../lib/storage';
 import NewList from './newList';
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
@@ -16,7 +16,8 @@ export default class Home extends Component {
         super(props);
         this.state = {
             lists: [],
-            adding: false
+            adding: false,
+            rightClickedIndex: null
         };
 
         if(useContextMenu){
@@ -37,24 +38,27 @@ export default class Home extends Component {
         this.setState({lists: lists});
     }
     
-    rightClick = (name, e) => {
+    rightClick = (index, e) => {
         e.preventDefault();
-        this.setState({rightClicked: name});
+        this.setState({rightClickedIndex: index});
         this.rightClickPosition = {x: e.x, y: e.y};
         this.menu.popup(remote.getCurrentWindow());
     }
     
     editList = () => {
-        alert("edit: "+this.state.rightClicked)
+        alert("edit: "+this.state.rightClickedIndex)
     }
 
     deleteList = () => {
-        alert("delete: "+this.state.rightClicked)
+        if(!window.confirm("Are you sure?")) return;
+        this.state.lists.splice(this.state.rightClickedIndex, 1);
+        this.setState({list: this.state.list});
+        saveLists(this.state.lists);
     }
     
     ListItem = (props) => {
         return (
-            <Link to={"/list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.name) : null}>
+            <Link to={"/list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.index) : null}>
                 <div className="list" style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
                     <div className="name">{props.name}</div>
                 </div>
@@ -66,7 +70,7 @@ export default class Home extends Component {
         var lists = [];
         for (let i = 0; i < this.state.lists.length; i++) {
             let list = this.state.lists[i];
-            lists.push(<this.ListItem key={i} {...list}/>);
+            lists.push(<this.ListItem key={i} index={i} {...list}/>);
         }
         return (
             <div className="lists">

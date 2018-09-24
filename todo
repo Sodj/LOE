@@ -10,9 +10,9 @@
 - persist the data
 
 - add list
+- delete list (confirm)
 
 # ---- Done ----
 
-- delete list (confirm)
 - edit list (rename list and columns) 
 - add/remove columns in v2
