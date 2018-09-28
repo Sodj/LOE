@@ -11,7 +11,7 @@ export default class List extends Component {
     }
 
     componentWillMount() {
-        setGlobalState({currentList: ": "+this.listName});
+        setGlobalState({currentList: this.listName, leftAction: 'back'});
         var list = getList(this.listName);
         if(!list) {
             alert("Oops, not found");
@@ -25,7 +25,7 @@ export default class List extends Component {
         }
     }
 
-    componentWillUnmount(){setGlobalState({currentList: ''});}
+    componentWillUnmount(){setGlobalState({currentList: '', leftAction: null});}
 
     Item = (props) => {
         let columns = [];

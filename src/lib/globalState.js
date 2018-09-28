@@ -1,10 +1,12 @@
-export {subscribeTo, setGlobalState};
+export {subscribeTo, setGlobalState, getGlobalState};
 
 var globalState = {};
 var contexts = {};
 
-function subscribeTo(context, variable){
-    contexts[variable]? contexts[variable].push(context) : contexts[variable] = [context];
+function subscribeTo(context, ...variables){
+    for (const variable of variables) {
+        contexts[variable]? contexts[variable].push(context) : contexts[variable] = [context];
+    }
 }
 
 function setGlobalState(newState){
@@ -17,4 +19,8 @@ function setGlobalState(newState){
 
         for(let context of contexts[key]){context.setState({[key]: newState[key]});};
     }
+}
+
+function getGlobalState(key) {
+    return key? globalState[key] : globalState;
 }

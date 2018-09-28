@@ -18,10 +18,107 @@ a {
   line-height: 50px;
   padding: 0 20px;
 }
+.head .back {
+  display: inline-block;
+  vertical-align: top;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-left: -20px;
+  background-image: url('../img/left.svg');
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.head .back:hover {
+  background-color: #DDD;
+}
 .head .brand {
   color: #555;
   font-weight: 600;
   font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.head .title {
+  display: inline-block;
+  width: calc(100% - 60px);
+  text-align: center;
+  font: 300 24px Nunito;
+  line-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: default;
+}
+.head .menu {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  float: right;
+  margin-right: -20px;
+}
+.head .menubtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  background-image: url('../img/menu.svg');
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition-duration: .2s;
+  cursor: pointer;
+  user-select: none;
+}
+.head .menubtn:hover {
+  background-color: #DDD;
+}
+.head .menulist {
+  position: relative;
+  z-index: 999;
+  width: 200px;
+  right: 160px;
+  bottom: 10px;
+  background-color: #F5F5F5;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.head .menuitem {
+  padding: 10px;
+  color: #333;
+  font: 400 16px Nunito;
+  background-color: #F5F5F5;
+  transition-duration: .2s;
+  cursor: pointer;
+  user-select: none;
+}
+.head .menuitem:hover {
+  background-color: #EEE;
+}
+.head .done {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  width: 82px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  background-color: #25a225;
+  font-weight: 300;
+  color: #EEE;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  user-select: none;
+}
+.head .done:hover {
+  background-color: #28b328;
+}
+.head .done:active {
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 /*-- HOME ----------------------------------------------------*/
 .lists {
@@ -53,6 +150,40 @@ a {
   white-space: nowrap;
   color: #EEE;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.list .actions {
+  float: right;
+  line-height: 0;
+  background-color: #FFF;
+  margin-top: -5px;
+  margin-right: 50%;
+  transform: translateX(50%);
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.list .actions > div {
+  display: inline-block;
+  width: 30px;
+  height: 26px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: grayscale(100%);
+  overflow: hidden;
+}
+.list .actions > div:hover {
+  filter: grayscale(0%);
+}
+.list .actions .edit {
+  background-image: url('../img/edit.svg');
+  border-right: solid thin transparent;
+  margin-right: -1px;
+}
+.list .actions .delete {
+  background-image: url('../img/delete.svg');
+  border-left: solid thin #EEE;
+  margin-left: -1px;
 }
 .list.add {
   background-color: #e0e0e0;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getLists, saveLists } from '../lib/storage';
 import NewList from './newList';
 import EditList from './editList';
+import { setGlobalState, subscribeTo } from '../lib/globalState';
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
 if(useContextMenu){
@@ -19,8 +20,11 @@ export default class Home extends Component {
             lists: [],
             adding: false,
             editing: false,
+            showEditButtons: false,
+            showDeleteButtons: false,
             rightClickedIndex: null
         };
+        subscribeTo(this, 'adding', 'showEditButtons', 'showDeleteButtons');
 
         if(useContextMenu){
             this.menu = new Menu();
@@ -38,7 +42,11 @@ export default class Home extends Component {
     componentDidMount() {
         var lists = getLists();
         this.setState({lists: lists});
+        setGlobalState({rightActions: ['create', 'edit', 'delete']});
     }
+
+    componentWillUnmount = () => {setGlobalState({rightActions: [], showEditButtons: false, showDeleteButtons: false});}
+    
     
     rightClick = (index, e) => {
         e.preventDefault();
@@ -47,13 +55,15 @@ export default class Home extends Component {
         this.menu.popup(remote.getCurrentWindow());
     }
     
-    editList = () => {
-        this.setState({editing: this.state.rightClickedIndex});
+    editList = (index) => {
+        index = index!==undefined? index : this.state.rightClickedIndex;
+        this.setState({editing: index});
     }
 
-    deleteList = () => {
+    deleteList = (index) => {
+        index = index!==undefined? index : this.state.rightClickedIndex;
         if(!window.confirm("Are you sure?")) return;
-        this.state.lists.splice(this.state.rightClickedIndex, 1);
+        this.state.lists.splice(index, 1);
         this.setState({list: this.state.list});
         saveLists(this.state.lists);
     }
@@ -62,6 +72,10 @@ export default class Home extends Component {
         return (
             <Link to={"/list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.index) : null}>
                 <div className="list" style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
+                    <div className="actions">
+                        {this.state.showEditButtons && <div className="edit" onClick={e=>{e.preventDefault(); this.editList(props.index);}}></div>}
+                        {this.state.showDeleteButtons && <div className="delete" onClick={e=>{e.preventDefault(); this.deleteList(props.index);}}></div>}
+                    </div>
                     <div className="name">{props.name}</div>
                 </div>
             </Link>

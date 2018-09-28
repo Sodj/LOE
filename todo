@@ -12,12 +12,20 @@
 - add list
 - delete list (confirm)
 - edit list (rename list and columns)
+- Back btn (in a List) [change app name to list name]
+- Edit btn (in Home)
+- Menu btn
 
 # ---- Done ----
 
-- Back btn (in a List) [change app name to list name]
-- Edit btn (in Home)
-- Menu btn?
+- About
+
+
+
+
+
+
+
 
 # ----- V2 -----
 
@@ -27,7 +35,7 @@
 - sort items (add date for sort by newest/oldes)
 - reorder items
 
-- drop cover?
+- use covers?
 - add cover
 - edit cover
 - remove cover
