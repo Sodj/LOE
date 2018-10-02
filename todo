@@ -19,6 +19,7 @@
 # ---- Done ----
 
 - About
+- Design home without covers
 
 
 
@@ -29,7 +30,7 @@
 
 # ----- V2 -----
 
-- add/remove/reorder columns
+- remove/reorder columns
 - use IDs instead of 'name' for lists & 'index' for items
 - search items
 - sort items (add date for sort by newest/oldes)
@@ -47,6 +48,10 @@
 - Import text data
 - Import with covers?
 - Sync to Drive/Dropbox/iCloud/Skydrive
+
+# ----- V4 -----
+
+- Column types: [select, checkbox, number]
 
 # ----- V8 -----
 
