@@ -19,13 +19,13 @@ export default class Main extends Component {
         subscribeTo(this, 'currentList', 'leftAction', 'rightActions', 'showEditButtons', 'showDeleteButtons');
     }
 
-    hideMenu = (e) => {if(!e.target || e.target.className!='menubtn') this.setState({menuIsOpen: false});}
+    hideMenu = (e) => {if(!e.target || e.target.className!=='menubtn') this.setState({menuIsOpen: false});}
     
     render() {
         return (
             <div id="app" onClick={this.hideMenu}>
                 <div className="head">
-                    {this.state.leftAction == 'back' && <Link to={"/"} className="back" />}
+                    {this.state.leftAction === 'back' && <Link to={"/"} className="back" />}
 
                     {this.state.currentList?
                         <div className="title">{this.state.currentList}</div>
