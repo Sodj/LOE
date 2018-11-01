@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getLists, saveLists } from '../lib/storage';
-import NewList from './newList';
-import EditList from './editList';
+import AditList from './AditList';
 import { setGlobalState, subscribeTo } from '../lib/globalState';
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
@@ -42,7 +41,7 @@ export default class Home extends Component {
     componentDidMount() {
         var lists = getLists();
         this.setState({lists: lists});
-        setGlobalState({rightActions: ['create', 'edit', 'delete']});
+        setGlobalState({rightActions: ['create', 'edit_mode']});
     }
 
     componentWillUnmount = () => {setGlobalState({rightActions: [], showEditButtons: false, showDeleteButtons: false});}
@@ -71,12 +70,12 @@ export default class Home extends Component {
     ListItem = (props) => {
         return (
             <Link to={"/list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.index) : null}>
-                <div className="list" style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
+                <div className={"list "+props.color} style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
                     <div className="actions">
                         {this.state.showEditButtons && <div className="edit" onClick={e=>{e.preventDefault(); this.editList(props.index);}}></div>}
                         {this.state.showDeleteButtons && <div className="delete" onClick={e=>{e.preventDefault(); this.deleteList(props.index);}}></div>}
                     </div>
-                    <div className="name">{props.name}</div>
+                    <div className="name" title={props.name}>{props.name}</div>
                 </div>
             </Link>
         );
@@ -94,8 +93,8 @@ export default class Home extends Component {
                 <div className="list add" onClick={()=>this.setState({adding: true})}>
                     <div className="add_icon"></div>
                 </div>
-                {this.state.adding && <NewList close={()=>this.setState({adding: false})} />}
-                {this.state.editing!==false && <EditList close={()=>this.setState({editing: false})} list={this.state.lists[this.state.editing]} />}
+                {this.state.adding !==false && <AditList close={()=>this.setState({adding : false})} />}
+                {this.state.editing!==false && <AditList close={()=>this.setState({editing: false})} list={this.state.lists[this.state.editing]} />}
             </div>
         );
     }

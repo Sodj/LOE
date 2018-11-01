@@ -15,11 +15,12 @@
 - Back btn (in a List) [change app name to list name]
 - Edit btn (in Home)
 - Menu btn
+- Design home without covers
+- use colors instead of covers
 
 # ---- Done ----
 
 - About
-- Design home without covers
 
 
 
@@ -36,6 +37,7 @@
 - sort items (add date for sort by newest/oldes)
 - reorder items
 
+- custom colors?
 - use covers?
 - add cover
 - edit cover

@@ -39,6 +39,7 @@ export default class Main extends Component {
                             {this.state.rightActions.indexOf('create')>=0 && <div className="menuitem" onClick={ e=>setGlobalState({adding:            true}) }>Create a list</div>}
                             {this.state.rightActions.indexOf('edit'  )>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showEditButtons:   true}) }>Edit   a list</div>}
                             {this.state.rightActions.indexOf('delete')>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showDeleteButtons: true}) }>Delete a list</div>}
+                            {this.state.rightActions.indexOf('edit_mode')>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showEditButtons: true, showDeleteButtons: true}) }>Editing Mode</div>}
                             <div className="menuitem">About</div>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ var lists = loadLists();
 
 // TODO remove dummy data
 if(!lists.length) lists = [
-    {name: "Games" , cover: "dmc.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: [
+    {name: "Games" , color: "orange" , columns: ["Title", "Status", "Rating", "Date"], items: [
         ["Assassins Creed Origins", "Finished"   , "★★★"        , "12-12-2012"],
         ["Call of Duty Ghosts"    , "Finished"   , "★★★"        , "12-12-2012"],
         ["Skyrim"                 , "Unfinished" , "Not my type", "12-12-2012"],
@@ -25,10 +25,11 @@ if(!lists.length) lists = [
         ["Grand Theft Auto V"     , "Finished"   , "★★★★"       , "12-12-2012"],
         ["League of Legends"      , "In progress", "Amazing"    , "12-12-2012"],
     ]},
-    {name: "Movies", cover: "hp5.jpg"   , columns: ["Title", "Status", "Rating", "Date"], items: []},
-    {name: "Anime" , cover: "large.gif" , columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
-    {name: "Series", cover: "office.jpg", columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
-    {name: "Todo"  , cover: "todo.jpg"  , columns: ["Title", "Status", "Due date"], items: []}
+    {name: "Movies", color: "blue",   columns: ["Title", "Status", "Rating", "Date"], items: []},
+    {name: "Anime" , color: "pink",   columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Series", color: "glue",   columns: ["Title", "Season", "Episode", "Status", "Rating"], items: []},
+    {name: "Todo"  , color: "yellow", columns: ["Title", "Status", "Due date"], items: []},
+    {name: "Smth"  , color: "dark",   columns: ["Title", "Status", "Due date"], items: []}
 ];
 
 function loadLists(){
