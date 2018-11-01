@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getLists, saveLists } from '../lib/storage';
 import AditList from './AditList';
 import { setGlobalState, subscribeTo } from '../lib/globalState';
+const root = require("../../package.json").homepage;
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
 if(useContextMenu){
@@ -69,8 +70,8 @@ export default class Home extends Component {
     
     ListItem = (props) => {
         return (
-            <Link to={"/list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.index) : null}>
-                <div className={"list "+props.color} style={{backgroundImage: "url('list_covers/"+props.cover+"')"}}>
+            <Link to={root+"list/"+props.name} onContextMenu={useContextMenu? this.rightClick.bind(null, props.index) : null}>
+                <div className={"list "+props.color}>
                     <div className="actions">
                         {this.state.showEditButtons && <div className="edit" onClick={e=>{e.preventDefault(); this.editList(props.index);}}></div>}
                         {this.state.showDeleteButtons && <div className="delete" onClick={e=>{e.preventDefault(); this.deleteList(props.index);}}></div>}

@@ -3,6 +3,7 @@ import Home from './Home';
 import List from './List';
 import { subscribeTo, setGlobalState, getGlobalState } from '../lib/globalState';
 import { Switch, Route, Link } from 'react-router-dom';
+const root = require("../../package.json").homepage;
 
 export default class Main extends Component {
     constructor(props, context) {
@@ -29,12 +30,12 @@ export default class Main extends Component {
         return (
             <div id="app" onClick={this.hideMenu}>
                 <div className="head">
-                    {this.state.leftAction === 'back' && <Link to={"/"} className="back" />}
+                    {this.state.leftAction === 'back' && <Link to={root} className="back" />}
 
                     {this.state.currentList?
                         <div className="title">{this.state.currentList}</div>
                         :
-                        <Link to={"/"} className="brand">List of Everything</Link>
+                        <Link to={root} className="brand">List of Everything</Link>
                     }
                     
                     <div className="menu">
@@ -55,8 +56,8 @@ export default class Main extends Component {
 
 
                 <Switch>
-                    <Route exact path="/"           component={Home}/>
-                    <Route exact path="/list/:name" component={List}/>
+                    <Route exact path={root}           component={Home}/>
+                    <Route exact path={root+"list/:name"} component={List}/>
                     <Route component={Home}/>
                 </Switch>
             </div>
