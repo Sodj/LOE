@@ -20,6 +20,10 @@ export default class Main extends Component {
     }
 
     hideMenu = (e) => {if(!e.target || e.target.className!=='menubtn') this.setState({menuIsOpen: false});}
+
+    showAbout = () => {
+        alert("List of Everything\nMade by Sodj\nCopyright 2018 ®");
+    }
     
     render() {
         return (
@@ -40,7 +44,7 @@ export default class Main extends Component {
                             {this.state.rightActions.indexOf('edit'  )>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showEditButtons:   true}) }>Edit   a list</div>}
                             {this.state.rightActions.indexOf('delete')>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showDeleteButtons: true}) }>Delete a list</div>}
                             {this.state.rightActions.indexOf('edit_mode')>=0 && <div className="menuitem" onClick={ e=>setGlobalState({showEditButtons: true, showDeleteButtons: true}) }>Editing Mode</div>}
-                            <div className="menuitem">About</div>
+                            <div className="menuitem" onClick={this.showAbout}>About</div>
                         </div>
                     </div>
 

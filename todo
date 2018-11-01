@@ -17,10 +17,10 @@
 - Menu btn
 - Design home without covers
 - use colors instead of covers
+- About
 
 # ---- Done ----
 
-- About
 
 
 
@@ -37,11 +37,13 @@
 - sort items (add date for sort by newest/oldes)
 - reorder items
 
-- custom colors?
+- custom bgcolor / fgcolor?
 - use covers?
 - add cover
 - edit cover
 - remove cover
+
+- proper About popup
 
 # ----- V3 -----
 
