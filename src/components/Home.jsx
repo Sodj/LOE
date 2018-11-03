@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getLists, saveLists } from '../lib/storage';
 import AditList from './AditList';
 import { setGlobalState, subscribeTo } from '../lib/globalState';
-const root = require("../../package.json").homepage;
+const root = require("../../package.json").homepage.replace(/\./g, "");
 const useContextMenu = !!window.require;
 var remote, Menu, MenuItem;
 if(useContextMenu){

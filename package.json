@@ -5,6 +5,7 @@
     "private": true,
     "main": "main.js",
     "homepage": "./",
+    "homepage_browser": "/LOE/",
     "dependencies": {},
     "scripts": {
         "e": "electron .",

@@ -3,7 +3,7 @@ import Home from './Home';
 import List from './List';
 import { subscribeTo, setGlobalState, getGlobalState } from '../lib/globalState';
 import { Switch, Route, Link } from 'react-router-dom';
-const root = require("../../package.json").homepage;
+const root = require("../../package.json").homepage.replace(/\./g, "");
 
 export default class Main extends Component {
     constructor(props, context) {
