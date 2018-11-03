@@ -34,7 +34,7 @@
 - remove/reorder columns
 - use IDs instead of 'name' for lists & 'index' for items
 - search items
-- sort items (add date for sort by newest/oldes)
+- sort items (add date for sort by newest/oldest)
 - reorder items
 
 - custom bgcolor / fgcolor?
