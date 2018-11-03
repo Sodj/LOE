@@ -8,4 +8,4 @@ OSX : https://github.com/Sodj/LOE/releases/download/LOE_v1.0/List.of.Everything.
 
 Linux (not tested) : https://github.com/Sodj/LOE/releases/download/LOE_v1.0/List.of.Everything-linux-x64.zip
 
-Windows: ...
+Windows: https://github.com/Sodj/LOE/releases/download/LOE_v1.0/List.of.Everything-win32.zip
